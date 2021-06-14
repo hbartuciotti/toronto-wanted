@@ -1,0 +1,59 @@
+<resources>
+    <!--App-->
+    <string name="app_name">Toronto Wanted</string>
+    <string name="app_version">Version 1.4</string>
+
+    <!--Links-->
+    <string name="appstore_link">https://play.google.com/store/apps/details?id=com.bartuciotti.torontowanted</string>
+    <string name="github_website">https://github.com/hbartuciotti</string>
+
+    <!--Fragment Headers-->
+    <string name="investigations_label">Investigations</string>
+    <string name="news_label">News</string>
+    <string name="about_label">About</string>
+
+    <!--How To Help-->
+    <string name="how_to_help_label">How to Help</string>
+    <string name="how_to_help_instructions">If you have any information regarding this case, please contact Homicide at <b>416&#8211;808&#8211;7400</b> or at <b>homicide@torontopolice.on.ca</b></string>
+    <string name="how_to_help_missing">If you have information regarding a missing child, call Missing Child Society of Canada toll-free at <b>800&#8211;661&#8211;6160</b> or email <b>tips@mcsc.ca</b></string>
+    <string name="how_to_help_missing_extra">You can also contact the Toronto Police Service non-emergency number: <b>416&#8211;808&#8211;2222</b>, or anonymously call Crime Stoppers, toll free line: <b>800&#8211;222&#8211;8477</b></string>
+    <string name="how_to_help_crime_stoppers">Crime Stoppers: Phone anonymously at <b>416&#8211;222&#8211;8477</b> or via the internet at <b>www.222tips.com</b>. You can also text <b>TOR</b> and your message to <b>274637</b></string>
+
+    <!--About-->
+    <string name="about_the_app">The Toronto Most Wanted App is a tool designed to help identifying criminals in Toronto, missing children in Ontario and helping with ongoing investigations. The app provides information issued by the Toronto Police and Missing Children Society of Canada websites in a user friendly interface.</string>
+    <string name="more_info">More Info</string>
+    <string name="contact_label">Contact</string>
+    <string name="contact_message">For suggestions, report errors or if you just want to say hi, you can reach us at <b>contact@bartuciotti.com</b></string>
+    <string name="rate_us">Rate us</string>
+    <string name="feedback_label">Feedback</string>
+    <string name="feedback">Please give us <b>5 stars</b> ⭐⭐⭐⭐⭐ and a positive review to support our work.\nOur code is open source and can be accessed at:</string>
+    <string name="toronto_police_website">https://www.torontopolice.on.ca</string>
+    <string name="toronto_mcsc_website">https://mcsc.ca/</string>
+
+    <!--Details-->
+    <string name="murdered_label">Murdered</string>
+    <string name="video_available">Video Available</string>
+    <string name="homicide_label">Homicide</string>
+    <string name="case_label">Case</string>
+    <string name="age_label">Age</string>
+    <string name="gender_label">Gender</string>
+    <string name="division_label">Division</string>
+    <string name="murdered_on_label">Murdered On</string>
+    <string name="details_label">Details</string>
+    <string name="victims_label">Victims</string>
+    <string name="suspects_label">Suspects</string>
+    <string name="missing_since_label">Missing Since</string>
+    <string name="ethnicity_label">Ethnicity</string>
+    <string name="description_label">Description</string>
+    <string name="news_releases_label">News Releases</string>
+    <string name="categories_label">Categories</string>
+    <string name="wanted_label">Wanted</string>
+    <string name="unsolved_label">Unsolved</string>
+    <string name="missing_label">Missing</string>
+
+    <!-- Internal -->
+    <string name="empty_message">Nothing to show!</string>
+    <string name="sample_text">Sample Text</string>
+    <string name="content_image">Image</string>
+    <string name="lorem_ipsum">Lorem Ipsum is simply dummy. Scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.\n\nIt was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
+</resources>

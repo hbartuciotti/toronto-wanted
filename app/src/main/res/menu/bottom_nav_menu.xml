@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/fragmentInvestigations"
+        android:icon="@drawable/ic_police"
+        android:title="@string/investigations_label" />
+
+    <item
+        android:id="@+id/fragmentNews"
+        android:icon="@drawable/ic_news"
+        android:title="@string/news_label" />
+
+    <item
+        android:id="@+id/fragmentAbout"
+        android:icon="@drawable/ic_info"
+        android:title="@string/about_label" />
+
+</menu>

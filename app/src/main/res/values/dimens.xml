@@ -1,0 +1,16 @@
+<resources>
+    <!-- Margins -->
+    <dimen name="app_margin">16dp</dimen>
+    <dimen name="topic_margin">24dp</dimen>
+    <dimen name="item_margin">8dp</dimen>
+
+    <!-- CardViews -->
+    <dimen name="radius_cards">18dp</dimen>
+    <dimen name="card_elevation">6dp</dimen>
+
+    <!-- Text -->
+    <dimen name="text_title">24sp</dimen>
+    <dimen name="text_medium">16sp</dimen>
+    <dimen name="text_notification">14sp</dimen>
+    <dimen name="text_small">12sp</dimen>
+</resources>
