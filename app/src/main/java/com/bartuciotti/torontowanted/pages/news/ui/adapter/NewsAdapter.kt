@@ -40,7 +40,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        bindNews(newsList[position], holder)
+        bindNews(newsList[position], position, holder)
     }
 
     override fun getItemCount(): Int {
@@ -57,14 +57,14 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
 
 
     /** View Binder */
-    private fun bindNews(news: News, holder: ViewHolder) {
+    private fun bindNews(news: News, position: Int, holder: ViewHolder) {
 
         holder.date.text = news.date
         holder.title.text = news.title
 
         //Click Listener
         holder.container.setOnClickListener {
-            listener.onNewsClicked(news)
+            listener.onNewsClicked(news, position)
         }
     }
 
@@ -79,7 +79,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
     }
 
     interface ClickListener {
-        fun onNewsClicked(news: News)
+        fun onNewsClicked(news: News, position: Int)
     }
 
     private val TAG = NewsAdapter::class.simpleName

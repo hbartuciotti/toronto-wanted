@@ -22,9 +22,9 @@ object Constants {
     // Notifications (Firebase Cloud Messaging Keys)
     const val NOTIFICATION_CATEGORY_KEY = "torontoWantedCategory"
     const val NOTIFICATION_TABLE_ID_KEY = "torontoWantedTableId"
-    const val NOTIFICATION_WANTED = "wanted"
-    const val NOTIFICATION_UNSOLVED = "unsolved"
-    const val NOTIFICATION_MISSING = "missing"
+    const val INVESTIGATION_WANTED = "wanted"
+    const val INVESTIGATION_UNSOLVED = "unsolved"
+    const val INVESTIGATION_MISSING = "missing"
 
     // Shared Preferences
     const val SHARED_PREFERENCES = "PRIVATE"
@@ -35,4 +35,12 @@ object Constants {
 
     // Extras
     const val DEEPLINK_EXTRA = "torontoWantedDeepLink"
+
+    //Analytics
+    const val ANALYTICS_PAGE_LOADED = "page_loaded"
+    const val ANALYTICS_INVESTIGATION_SELECTED = "investigation_selected"
+    const val ANALYTICS_VIDEO_OPENED = "video_opened"
+    const val ANALYTICS_NEWS_OPENED = "news_opened"
+    const val ANALYTICS_ANNOUNCEMENT_CLICKED = "announcement_clicked"
+    const val ANALYTICS_RATE_US_CLICKED = "rate_us_clicked"
 }

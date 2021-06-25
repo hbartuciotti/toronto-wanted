@@ -13,8 +13,8 @@ android {
         applicationId "com.bartuciotti.torontowanted"
         minSdkVersion 23
         targetSdkVersion 30
-        versionCode 5
-        versionName "1.4"
+        versionCode 7
+        versionName "1.6"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         //multiDexEnabled true
@@ -59,10 +59,10 @@ dependencies {
 
     // Firebase
     // BoM for the Firebase platform
-    implementation platform('com.google.firebase:firebase-bom:27.1.0')
+    implementation platform('com.google.firebase:firebase-bom:28.2.0')
     // When using the BoM, you don't specify versions in Firebase library dependencies
-    implementation 'com.google.firebase:firebase-messaging'
-    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-messaging-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-database-ktx'
 
     // Testing

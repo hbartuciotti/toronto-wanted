@@ -9,6 +9,9 @@ interface WantedDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertWantedCriminals(wantedCriminals: List<Wanted>)
 
+    @Query("DELETE FROM wanted")
+    suspend fun deleteWanted()
+
     @Transaction
     @Query("SELECT wanted.*, cases.* FROM wanted INNER JOIN cases on wanted.caseId = cases.id ORDER BY wanted.wantedId DESC")
     fun getWantedAndCaseData(): LiveData<List<WantedCase>>

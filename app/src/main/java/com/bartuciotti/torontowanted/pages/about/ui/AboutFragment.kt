@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bartuciotti.torontowanted.R
 import com.bartuciotti.torontowanted.databinding.FragmentAboutBinding
+import com.bartuciotti.torontowanted.pages.news.ui.NewsFragment
+import com.bartuciotti.torontowanted.util.AnalyticsHelper
 
 /**
  * About Page
@@ -34,21 +36,19 @@ class AboutFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        AnalyticsHelper.pageLoaded(TAG)
         setButtonClickEvents()
     }
 
     private fun setButtonClickEvents() {
 
         binding.btMore.setOnClickListener {
-            val uri = Uri.parse(getString(R.string.toronto_police_website))
-            val intent = Intent(Intent.ACTION_VIEW, uri)
-            startActivity(intent)
+            openLink(getString(R.string.toronto_police_website))
         }
 
         binding.btRateUs.setOnClickListener {
-            val uri = Uri.parse(getString(R.string.appstore_link))
-            val intent = Intent(Intent.ACTION_VIEW, uri)
-            startActivity(intent)
+            AnalyticsHelper.rateUsClicked()
+            openLink(getString(R.string.appstore_link))
         }
     }
 
@@ -56,4 +56,14 @@ class AboutFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+
+    /** Util */
+    private fun openLink(link: String){
+        val uri = Uri.parse(link)
+        val intent = Intent(Intent.ACTION_VIEW, uri)
+        startActivity(intent)
+    }
+
+    private val TAG = AboutFragment::class.simpleName as String
 }

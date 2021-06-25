@@ -19,6 +19,7 @@ import com.bartuciotti.torontowanted.databinding.FragmentNewsBinding
 import com.bartuciotti.torontowanted.pages.news.data.News
 import com.bartuciotti.torontowanted.pages.news.ui.adapter.NewsAdapter
 import com.bartuciotti.torontowanted.pages.news.viewmodel.NewsViewModel
+import com.bartuciotti.torontowanted.util.AnalyticsHelper
 import com.bartuciotti.torontowanted.util.NetworkStateReceiver
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -53,6 +54,7 @@ class NewsFragment : Fragment(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        AnalyticsHelper.pageLoaded(TAG)
         handlePageLoading()
         setRecyclerView()
 
@@ -116,7 +118,8 @@ class NewsFragment : Fragment(),
 
 
     /** Listeners */
-    override fun onNewsClicked(news: News) {
+    override fun onNewsClicked(news: News, position: Int) {
+        AnalyticsHelper.newsSelected(position, news.date)
         startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(news.link)))
     }
 
@@ -149,5 +152,5 @@ class NewsFragment : Fragment(),
         }
     }
 
-    private val TAG = NewsFragment::class.simpleName
+    private val TAG = NewsFragment::class.simpleName as String
 }

@@ -3,15 +3,14 @@ package com.bartuciotti.torontowanted.util
 import android.content.Intent
 import android.util.Log
 import androidx.navigation.NavController
-import com.bartuciotti.torontowanted.MainActivity
 import com.bartuciotti.torontowanted.data.Repository
 import com.bartuciotti.torontowanted.pages.investigations.data.Missing
 import com.bartuciotti.torontowanted.pages.investigations.data.UnsolvedCase
 import com.bartuciotti.torontowanted.pages.investigations.data.WantedCase
 import com.bartuciotti.torontowanted.pages.investigations.ui.InvestigationsFragmentDirections
-import com.bartuciotti.torontowanted.util.Constants.NOTIFICATION_MISSING
-import com.bartuciotti.torontowanted.util.Constants.NOTIFICATION_UNSOLVED
-import com.bartuciotti.torontowanted.util.Constants.NOTIFICATION_WANTED
+import com.bartuciotti.torontowanted.util.Constants.INVESTIGATION_MISSING
+import com.bartuciotti.torontowanted.util.Constants.INVESTIGATION_UNSOLVED
+import com.bartuciotti.torontowanted.util.Constants.INVESTIGATION_WANTED
 import javax.inject.Inject
 
 /**
@@ -35,19 +34,19 @@ class DeepLinkHelper @Inject constructor(private val repository: Repository) {
     suspend fun openDeepLink(deeplink: DeepLink, navController: NavController) {
 
         when (deeplink.category) {
-            NOTIFICATION_WANTED -> {
+            INVESTIGATION_WANTED -> {
                 val wantedCase = repository.getWantedCaseById(deeplink.itemId)
                 if (wantedCase != null)
                     openInvestigationDetailsPage(wantedCase, null, navController)
             }
 
-            NOTIFICATION_UNSOLVED -> {
+            INVESTIGATION_UNSOLVED -> {
                 val unsolvedCase = repository.getUnsolvedCaseById(deeplink.itemId)
                 if (unsolvedCase != null)
                     openInvestigationDetailsPage(null, unsolvedCase, navController)
             }
 
-            NOTIFICATION_MISSING -> {
+            INVESTIGATION_MISSING -> {
                 val missing = repository.getMissingById(deeplink.itemId)
                 if (missing != null)
                     openMissingDetailsPage(missing, navController)

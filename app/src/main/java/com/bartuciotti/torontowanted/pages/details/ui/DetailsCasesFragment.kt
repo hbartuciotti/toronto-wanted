@@ -1,5 +1,7 @@
 package com.bartuciotti.torontowanted.pages.details.ui
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -16,6 +18,7 @@ import com.bartuciotti.torontowanted.pages.details.ui.adapter.VictimsSuspectsAda
 import com.bartuciotti.torontowanted.pages.details.viewmodel.DetailsViewModel
 import com.bartuciotti.torontowanted.pages.investigations.data.UnsolvedCase
 import com.bartuciotti.torontowanted.pages.investigations.data.WantedCase
+import com.bartuciotti.torontowanted.util.AnalyticsHelper
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -51,6 +54,7 @@ class DetailsCasesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        AnalyticsHelper.pageLoaded(TAG)
         setRecyclerView()
         displayDetails()
     }
@@ -95,9 +99,7 @@ class DetailsCasesFragment : Fragment() {
         binding.tvDetails.text = wantedCase.details
         binding.listLabel.text = this.resources.getString(R.string.victims_label)
 
-        if (wantedCase.video != null)
-            binding.btVideo.visibility = View.VISIBLE
-        else binding.btVideo.visibility = View.GONE
+        setVideoButton(wantedCase)
 
         bindVictimsList(wantedCase.caseId)
     }
@@ -148,5 +150,23 @@ class DetailsCasesFragment : Fragment() {
         }
     }
 
-    private val TAG = DetailsCasesFragment::class.simpleName
+    private fun setVideoButton(wantedCase: WantedCase) {
+        if (wantedCase.video != null) {
+            binding.btVideo.visibility = View.VISIBLE
+            binding.btVideo.setOnClickListener {
+                AnalyticsHelper.videoOpened(wantedCase.wantedId.toString(), wantedCase.video!!)
+                openLink(wantedCase.video!!)
+            }
+        } else binding.btVideo.visibility = View.GONE
+    }
+
+
+    /** Util */
+    private fun openLink(link: String){
+        val uri = Uri.parse(link)
+        val intent = Intent(Intent.ACTION_VIEW, uri)
+        startActivity(intent)
+    }
+
+    private val TAG = DetailsCasesFragment::class.simpleName as String
 }

@@ -124,33 +124,45 @@ class Repository @Inject constructor(
 
     /** Room Inserts */
     private suspend fun insertCasesToDatabase(list: List<Case>?) {
-        if (!list.isNullOrEmpty())
+        if (!list.isNullOrEmpty()) {
+            database.caseDao().deleteCases()
             database.caseDao().insertCases(list)
+        }
     }
 
     private suspend fun insertWantedToDatabase(list: List<Wanted>?) {
-        if (!list.isNullOrEmpty())
+        if (!list.isNullOrEmpty()) {
+            database.wantedDao().deleteWanted()
             database.wantedDao().insertWantedCriminals(list)
+        }
     }
 
     private suspend fun insertVictimsToDatabase(list: List<Victim>?) {
-        if (!list.isNullOrEmpty())
+        if (!list.isNullOrEmpty()) {
+            database.victimDao().deleteVictims()
             database.victimDao().insertVictims(list)
+        }
     }
 
     private suspend fun insertMissingToDatabase(list: List<Missing>?) {
-        if (!list.isNullOrEmpty())
+        if (!list.isNullOrEmpty()) {
+            database.missingDao().deleteMissing()
             database.missingDao().insertMissing(list)
+        }
     }
 
     private suspend fun insertSuspectsToDatabase(list: List<Suspect>?) {
-        if (!list.isNullOrEmpty())
+        if (!list.isNullOrEmpty()) {
+            database.suspectDao().deleteSuspects()
             database.suspectDao().insertSuspects(list)
+        }
     }
 
     private suspend fun insertNewsToDatabase(list: List<News>?) {
-        if (!list.isNullOrEmpty())
+        if (!list.isNullOrEmpty()) {
+            database.newsDao().deleteNews()
             database.newsDao().insertNews(list)
+        }
     }
 
 

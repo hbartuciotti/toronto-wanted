@@ -9,6 +9,9 @@ interface MissingDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMissing(wantedCriminals: List<Missing>)
 
+    @Query("DELETE FROM missing")
+    suspend fun deleteMissing()
+
     @Query("SELECT * FROM missing ORDER BY missing.id DESC")
     fun getMissing(): LiveData<List<Missing>>
 

@@ -9,6 +9,7 @@ import androidx.navigation.fragment.navArgs
 import com.bartuciotti.torontowanted.R
 import com.bartuciotti.torontowanted.databinding.FragmentDetailsMissingBinding
 import com.bartuciotti.torontowanted.pages.investigations.data.Missing
+import com.bartuciotti.torontowanted.util.AnalyticsHelper
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -40,6 +41,7 @@ class DetailsMissingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        AnalyticsHelper.pageLoaded(TAG)
         displayDetails(args.currentMissing)
     }
 
@@ -68,4 +70,6 @@ class DetailsMissingFragment : Fragment() {
         binding.tvDetails.text = missing.details
         binding.tvDescription.text = missing.description
     }
+
+    private val TAG = DetailsMissingFragment::class.simpleName as String
 }

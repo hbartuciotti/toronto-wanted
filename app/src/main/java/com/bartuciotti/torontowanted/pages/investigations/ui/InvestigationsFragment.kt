@@ -27,6 +27,8 @@ import com.bartuciotti.torontowanted.pages.investigations.data.WantedCase
 import com.bartuciotti.torontowanted.pages.investigations.ui.adapter.InvestigationsParentAdapter
 import com.bartuciotti.torontowanted.pages.investigations.ui.viewbinder.*
 import com.bartuciotti.torontowanted.pages.investigations.viewmodel.InvestigationsViewModel
+import com.bartuciotti.torontowanted.util.AnalyticsHelper
+import com.bartuciotti.torontowanted.util.Constants
 import com.bartuciotti.torontowanted.util.NetworkStateReceiver
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -68,6 +70,7 @@ class InvestigationsFragment : Fragment(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        AnalyticsHelper.pageLoaded(TAG)
         handlePageLoading()
         setRecyclerView()
 
@@ -145,6 +148,8 @@ class InvestigationsFragment : Fragment(),
 
     override fun onWantedClicked(wantedCase: WantedCase) {
         Log.d(TAG, "onWantedClicked")
+        AnalyticsHelper.investigationSelected(Constants.INVESTIGATION_WANTED, wantedCase.wantedId.toString(), wantedCase.subtitle)
+
         val action = InvestigationsFragmentDirections.actionFragmentInvestigationsToFragmentDetails(
             wantedCase,
             null
@@ -154,6 +159,8 @@ class InvestigationsFragment : Fragment(),
 
     override fun onUnsolvedClicked(unsolvedCase: UnsolvedCase) {
         Log.d(TAG, "onUnsolvedClicked")
+        AnalyticsHelper.investigationSelected(Constants.INVESTIGATION_UNSOLVED, unsolvedCase.victimId.toString(), unsolvedCase.subtitle)
+
         val action = InvestigationsFragmentDirections.actionFragmentInvestigationsToFragmentDetails(
             null,
             unsolvedCase
@@ -163,6 +170,8 @@ class InvestigationsFragment : Fragment(),
 
     override fun onMissingClicked(missing: Missing) {
         Log.d(TAG, "onMissingClicked")
+        AnalyticsHelper.investigationSelected(Constants.INVESTIGATION_MISSING, missing.id.toString(), missing.name)
+
         val action =
             InvestigationsFragmentDirections.actionFragmentInvestigationsToFragmentDetailsMissing(
                 missing
@@ -172,11 +181,10 @@ class InvestigationsFragment : Fragment(),
 
     override fun onAnnouncementClicked(announcement: Announcement) {
         Log.d(TAG, "onAnnouncementClicked")
-        if (!announcement.link.isNullOrEmpty()) { // Open link if exists
-            val uri = Uri.parse(announcement.link)
-            val intent = Intent(Intent.ACTION_VIEW, uri)
-            startActivity(intent)
-        }
+        AnalyticsHelper.announcementClicked()
+
+        if (!announcement.link.isNullOrEmpty()) // Open link if exists
+            openLink(announcement.link!!)
     }
 
     override fun onNetworkConnectionChanged(isConnected: Boolean) {
@@ -221,5 +229,11 @@ class InvestigationsFragment : Fragment(),
         }
     }
 
-    private val TAG = InvestigationsFragment::class.simpleName
+    private fun openLink(link: String){
+        val uri = Uri.parse(link)
+        val intent = Intent(Intent.ACTION_VIEW, uri)
+        startActivity(intent)
+    }
+
+    private val TAG = InvestigationsFragment::class.simpleName as String
 }
